@@ -1644,12 +1644,6 @@
 
   <script>
 
-      loadDoc("./xml/class_sunday.xml", classXML);
-
-      loadDoc("./json/class_sunday.json", classJSON);
-
-      loadDoc("./json/class_sunday.json", loadSubject);
-
       function loadDoc(url, cFunction) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {cFunction(this);}
@@ -1708,12 +1702,12 @@
                   '</div>'+
                 '</div>'
         }
-        document.getElementById('nav-sunday').children[0].children[0].innerHTML = html_text;
+        document.getElementById('nav-sunday').children[0].children[1].innerHTML = html_text;
         }
 
-        function loadSubject(){
+        function loadSubject(file){
           const select = document.getElementById("subject-select")
-          fetch("./json/contact_subject.json")
+          fetch(file)
           .then(jsonDoc => jsonDoc.json())
           .then(jsonObj => {
             console.log(jsonObj.contactSubject)
@@ -1738,6 +1732,11 @@
      const contact = document.getElementById("contact-head");
      contact.innerHTML = "WooooW";
 
+
+    loadDoc("./xml/class_sunday.xml", classXML);
+    loadDoc("./json/class_sunday.json", classJSON);
+    //loadSubject('./json/contact_subject.json');
+    loadSubject('http://localhost:4040/');
     };
   </script>
 </body>
