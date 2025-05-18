@@ -5,6 +5,7 @@
     "Schedule",
     "Instructor",
     "Price",
+    "Location",
     "Other"
   ]
 }
